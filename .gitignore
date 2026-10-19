@@ -1,0 +1,43 @@
+# Android / Gradle
+Android/.gradle/
+Android/build/
+Android/app/build/
+Android/app/.cxx/
+Android/local.properties
+Android/.idea/
+*.iml
+captures/
+
+# Native build artifacts
+core/*.exe
+core/*.o
+core/*.obj
+*.so
+*.dll
+*.a
+
+# Build outputs
+dist/
+*.apk
+*.aab
+
+# Dictionary data (not committed; regenerate from ECDICT, see README)
+/ecdict.csv
+/6级单词表_自用.xls
+/assets/dict/
+/Android/app/src/main/assets/dict/cet6.esd
+
+# Excluded: test code / helper scripts / original idea
+/core/tests/
+/Android/app/src/test/
+/Android/app/src/androidTest/
+/tools/scripts/xls_to_csv.py
+/idea.md
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+
+/.idea/
+
