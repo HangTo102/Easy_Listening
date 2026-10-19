@@ -1,10 +1,18 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.compose)
 }
 
-// 指向仓库里的 C 内核目录（E:\program_code\Easy_Listening\core）
+// 指向与 Android 工程同级的 C 内核目录。
 val esCoreDir = rootProject.projectDir.parentFile.resolve("core").absolutePath.replace('\\', '/')
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties().apply {
+    if (keystorePropertiesFile.isFile) {
+        keystorePropertiesFile.inputStream().use(::load)
+    }
+}
 
 android {
     namespace = "com.easylistening.app"
@@ -39,12 +47,23 @@ android {
         }
     }
 
+    signingConfigs {
+        create("HangTo102") {
+            storeFile = rootProject.file(
+                keystoreProperties.getProperty("storeFile") ?: "keystore/HangTo102-release.jks"
+            )
+            storePassword = keystoreProperties.getProperty("storePassword")
+            keyAlias = keystoreProperties.getProperty("keyAlias")
+            keyPassword = keystoreProperties.getProperty("keyPassword")
+        }
+    }
+
     buildTypes {
         release {
             optimization {
                 enable = false
             }
-            signingConfig = signingConfigs.getByName("debug")
+            signingConfig = signingConfigs.getByName("HangTo102")
         }
     }
     compileOptions {

@@ -625,7 +625,7 @@ Easy_Listening/
 
 - [x] 处理上文高优先级项 1–4（✅ 已完成并真机验证）
 - [ ] README、构建脚本、ECDICT 许可说明
-- [ ] 用正式 keystore 签名（当前为 debug 签名，仅供测试）
+- [x] 用正式 keystore 签名
 - [ ] 补桌面 CMake（当前桌面用 Makefile，Android 用 CMake）
 - [ ] 清理无用资源（如被 `main.esd` 取代的 `cet6.esd`）
 

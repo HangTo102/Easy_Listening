@@ -21,6 +21,11 @@ dist/
 *.apk
 *.aab
 
+# Release signing (private)
+/Android/keystore.properties
+*.jks
+*.keystore
+
 # Dictionary data (not committed; regenerate from ECDICT, see README)
 /ecdict.csv
 /6级单词表_自用.xls

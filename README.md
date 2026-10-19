@@ -110,6 +110,20 @@ cd Android
 
 > 如果你的 NDK 版本不同，请修改 `Android/app/build.gradle.kts` 中的 `ndkVersion`。
 
+### Release 签名
+
+正式 Release 使用本地私有 keystore，签名文件和密码不会提交到仓库。在
+`Android/keystore.properties` 中配置：
+
+```properties
+storeFile=keystore/HangTo102-release.jks
+storePassword=你的密码
+keyAlias=HangTo102
+keyPassword=你的密码
+```
+
+请妥善备份 keystore 和密码。后续版本必须使用同一份签名，才能覆盖安装已有版本。
+
 ### 桌面内核工具
 
 需要 gcc + make（Windows 下可用 MinGW）：
@@ -159,7 +173,7 @@ mingw32-make tools
 - **完整词典未内置**：当前只内置过滤版（约 1.1 万词）。完整 ECDICT / 按需下载仍是设计规划（见 `docs/DESIGN.md` §16），尚未实现。
 - **例句与句子翻译**：未实现；后续计划通过 LLM 提供例句翻译。
 - **App 图标**：目前仍为默认图标，待设计。
-- **签名**：Release 构建使用 debug 签名，仅供测试；正式发布请配置自己的 keystore。
+- **签名**：正式 Release 使用本地私有 keystore，仓库不包含签名文件或密码。
 - **平台**：仅 Android（minSdk 23）。
 - **仓库范围**：不包含测试代码、原始词表数据与部分辅助脚本。
 
